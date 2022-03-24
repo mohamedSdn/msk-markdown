@@ -308,6 +308,24 @@ const slide = (e) => {
     mark.style.width = style.mark[0];
     mark.style.padding = style.mark[1];
 };
+
+// close modal on outside click
+const modals = document.querySelectorAll(".modal");
+modals.forEach(modal => {
+    modal.addEventListener("click", () => {
+        const openedModal = document.querySelector(".show-modal");
+        openedModal.classList.remove("show-modal");
+    });
+});
+
+const modalContentElements = document.querySelectorAll(".modal-content");
+modalContentElements.forEach(modalContentElement => {
+    modalContentElement.addEventListener("click", (e) => {
+        e.stopPropagation();
+    });
+});
+
+// ***** about modal logic *****
 const About = document.getElementById("About");
 const ToggleAbout = document.getElementById("ToggleAbout");
 const CloseAbout = document.getElementById("CloseAbout");
@@ -319,6 +337,10 @@ const AboutOnClick = ({
         OpenCloseAbout();
     }
 };
+ToggleAbout.addEventListener("click", OpenCloseAbout);
+CloseAbout.addEventListener("click", OpenCloseAbout);
+
+// ***** file save modal logic *****
 const SaveFile = document.getElementById("SaveFileModal");
 const ToggleSaveFile = document.getElementById("ToggleSaveFile");
 const CloseSaveFile = document.getElementById("CloseSaveFile");
@@ -332,6 +354,8 @@ const SaveFileOnClick = ({
 };
 ToggleSaveFile.addEventListener("click", OpenCloseSaveFile);
 CloseSaveFile.addEventListener("click", OpenCloseSaveFile);
+
+// ***** settings modal logic *****
 const Settings = document.getElementById("Settings");
 const ToggleSettings = document.getElementById("ToggleSettings");
 const CloseSettings = document.getElementById("CloseSettings");
@@ -343,8 +367,6 @@ const SettingsOnClick = ({
         OpenCloseSettings();
     }
 };
-ToggleAbout.addEventListener("click", OpenCloseAbout);
-CloseAbout.addEventListener("click", OpenCloseAbout);
 ToggleSettings.addEventListener("click", OpenCloseSettings);
 CloseSettings.addEventListener("click", OpenCloseSettings);
 

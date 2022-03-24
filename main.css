@@ -437,7 +437,7 @@ img {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-Input::placeholder {
+.Input::placeholder {
     color: #6c757d;
     opacity: 1;
 }
